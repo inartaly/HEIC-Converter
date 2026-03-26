@@ -1,0 +1,296 @@
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --accent: #4f8cff;
+  --accent-soft: #e7f1ff;
+  --text: #1a1a1a;
+  --muted: #6b7280;
+  --danger: #ef4444;
+  --radius: 12px;
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --transition: 150ms ease-out;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 960px;
+  margin: 32px auto;
+  padding: 24px 20px 40px;
+  background: var(--surface);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.app-header h1 {
+  margin: 0 0 8px;
+  font-size: 1.9rem;
+  letter-spacing: 0.02em;
+}
+
+.app-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition),
+    transform 120ms ease-out, box-shadow 120ms ease-out;
+  font-weight: 500;
+  background: transparent;
+}
+
+button.primary {
+  background: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(79, 140, 255, 0.35);
+}
+
+button.primary:hover:not(:disabled) {
+  background: #3f7ae0;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(79, 140, 255, 0.45);
+}
+
+button.secondary {
+  background: var(--accent-soft);
+  color: var(--text);
+  border-color: #c7ddff;
+}
+
+button.secondary:hover:not(:disabled) {
+  background: #d9e7ff;
+}
+
+button.ghost {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+button.ghost:hover:not(:disabled) {
+  border-color: #cbd5f5;
+  color: var(--text);
+}
+
+button.small {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+
+.format-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.format-selector label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.format-selector select {
+  background: #f9fafb;
+  color: var(--text);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  font-size: 0.9rem;
+}
+
+.dropzone-section {
+  margin-top: 4px;
+}
+
+.dropzone {
+  border-radius: var(--radius);
+  border: 1px dashed #cbd5f5;
+  padding: 28px 16px;
+  text-align: center;
+  background: #f9fbff;
+  color: var(--muted);
+  transition: border-color var(--transition), background-color var(--transition),
+    transform 120ms ease-out, box-shadow 120ms ease-out;
+}
+
+.dropzone--active {
+  border-color: var(--accent);
+  background: #f3f6ff;
+  box-shadow: 0 0 0 1px rgba(79, 140, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.dropzone-title {
+  margin: 0 0 4px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.dropzone-subtitle {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.filelist-section {
+  margin-top: 4px;
+}
+
+.filelist-empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.filelist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filelist-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #f9fafb;
+  border: 1px solid var(--border);
+}
+
+.filelist-thumb-wrapper {
+  width: 72px;
+  height: 56px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filelist-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.filelist-thumb.placeholder {
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: #e5e7eb;
+}
+
+.filelist-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.filelist-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.filelist-status {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.filelist-error {
+  color: var(--danger);
+}
+
+.filelist-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.error-banner {
+  margin-top: 4px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  font-size: 0.85rem;
+}
+
+.app-footer {
+  margin-top: 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .app {
+    margin: 16px;
+    padding: 18px 14px 28px;
+  }
+
+  .filelist-item {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .filelist-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+    grid-column: 1 / -1;
+  }
+}
